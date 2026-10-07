@@ -1,12 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-// import { VStack, HStack, Card, Text, Button, Heading, Separator } from '@chakra-ui/react';
-import { VStack, HStack, Card, Text, Button, Heading } from '@chakra-ui/react';
-// import { LuCalendarPlus, LuSearch, LuShield } from 'react-icons/lu';
-import { LuCalendarPlus, LuSearch } from 'react-icons/lu';
-import { useScrollToTop } from '@/shared/hooks/useScrollToTop';
-import PageContainer from '@/shared/components/layout/PageContainer';
-import AnimatedCard from '@/shared/components/ui/AnimatedCard';
-// import PageActions from '@/shared/components/ui/PageActions';
+import { useNavigate } from "react-router-dom";
+import { VStack, HStack, Card, Text, Button, Heading } from "@chakra-ui/react";
+import { LuCalendarPlus, LuSearch } from "react-icons/lu";
+import { useScrollToTop } from "@/shared/hooks/useScrollToTop";
+import PageContainer from "@/shared/components/layout/PageContainer";
+import AnimatedCard from "@/shared/components/ui/AnimatedCard";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -15,15 +12,14 @@ export default function Home() {
   useScrollToTop();
 
   const handleMakeReservation = () => {
-    navigate('/reserve');
+    navigate("/reserve");
   };
 
-  // const handleGoToAdmin = () => {
-  //   navigate('/admin');
-  // };
-
   return (
-    <PageContainer title="兵庫県立大学商科キャンパス 部室棟予約システム" titleColor="blue.600">
+    <PageContainer
+      title="兵庫県立大学商科キャンパス 部室棟予約システム"
+      titleColor="blue.600"
+    >
       <VStack gap={8} align="stretch">
         {/* メインアクション */}
         <AnimatedCard delay={0.1}>
@@ -43,7 +39,13 @@ export default function Home() {
               <Text color="blue.600" fontSize="sm">
                 予約の確定時に使用事項と使用規程の確認をお願いします
               </Text>
-              <Button size="xl" colorScheme="blue" px={12} py={6} onClick={handleMakeReservation}>
+              <Button
+                size="xl"
+                colorScheme="blue"
+                px={12}
+                py={6}
+                onClick={handleMakeReservation}
+              >
                 新規予約
               </Button>
             </VStack>
@@ -76,8 +78,8 @@ export default function Home() {
                 • キャンセルは使用日の3日前までにお願いします
                 <br />
                 • 利用後は必ず清掃・整理整頓をお願いします
-                <br />
-                • 利用終了時には部屋の状況を撮影し、返却時にアップロードしてください
+                <br />•
+                利用終了時には部屋の状況を撮影し、返却時にアップロードしてください
               </Text>
 
               <Text fontSize="md" fontWeight="semibold" mt={4}>
@@ -90,20 +92,18 @@ export default function Home() {
           </Card.Body>
         </AnimatedCard>
 
-        {/* <PageActions delay={0.5}>
-          <Separator mb={4} />
-          <VStack gap={2}>
-            <Text fontSize="xs" color="gray.500" textAlign="center">
-              管理者の方はこちら
-            </Text>
-            <Button size="sm" variant="ghost" colorScheme="gray" onClick={handleGoToAdmin}>
-              <HStack>
-                <LuShield />
-                <Text>管理画面</Text>
-              </HStack>
-            </Button>
-          </VStack>
-        </PageActions> */}
+        <Button
+          size="sm"
+          variant="ghost"
+          color="gray.500"
+          fontWeight="normal"
+          alignSelf="center"
+          mt={4}
+          _hover={{ color: "gray.700", bg: "gray.50" }}
+          onClick={() => navigate("/admin")}
+        >
+          管理画面
+        </Button>
       </VStack>
     </PageContainer>
   );
