@@ -12,9 +12,8 @@ import {
   HStack,
   IconButton,
 } from '@chakra-ui/react';
-// import { useNavigate } from 'react-router-dom';
-// import { LuArrowLeft, LuLogIn, LuEye, LuEyeOff } from 'react-icons/lu';
-import { LuLogIn, LuEye, LuEyeOff } from 'react-icons/lu';
+import { useNavigate } from 'react-router-dom';
+import { LuArrowLeft, LuLogIn, LuEye, LuEyeOff } from 'react-icons/lu';
 import { useAuth } from '../hooks/useAuth';
 import { ApiError } from '@/shared/api';
 
@@ -25,11 +24,11 @@ export const LoginForm = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleGoHome = () => {
-  //   navigate('/');
-  // };
+  const handleGoHome = () => {
+    navigate('/');
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -126,22 +125,21 @@ export const LoginForm = () => {
                 </HStack>
               </Button>
 
-              {/* 控えめなホームに戻るボタン */}
-              {/* <Box textAlign="center" mt={2}>
+              <Box textAlign="center" mt={2}>
                 <Button
+                  type="button"
                   variant="ghost"
                   size="sm"
                   onClick={handleGoHome}
-                  color="gray.400"
-                  fontSize="xs"
-                  _hover={{ color: 'gray.600' }}
+                  color="gray.600"
+                  _hover={{ color: 'gray.800', bg: 'gray.100' }}
                 >
                   <HStack gap={1}>
                     <LuArrowLeft size="12px" />
                     <Text>ホームに戻る</Text>
                   </HStack>
                 </Button>
-              </Box> */}
+              </Box>
             </Stack>
           </form>
         </Card.Body>
